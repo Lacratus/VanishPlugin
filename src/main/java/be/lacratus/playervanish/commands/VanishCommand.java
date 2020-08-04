@@ -30,7 +30,7 @@ public class VanishCommand implements CommandExecutor {
         if(plugin.isVanished(player)){
             plugin.removeVanishedPlayer(player);
             for (Player unvanishedPlayer : Bukkit.getOnlinePlayers()) {
-                unvanishedPlayer.showPlayer(plugin, unvanishedPlayer);
+                unvanishedPlayer.showPlayer(plugin, player);
             }
             player.sendMessage("Je bent terug zichtbaar");
 
@@ -38,7 +38,7 @@ public class VanishCommand implements CommandExecutor {
             //Persoon zal in vanish terechtkomen
             plugin.addVanishedPlayer(player);
             for (Player vanishedPlayer : Bukkit.getOnlinePlayers()) {
-                vanishedPlayer.hidePlayer(plugin, vanishedPlayer);
+                vanishedPlayer.hidePlayer(plugin, player);
             }
             player.sendMessage("Je bent nu onzichtbaar");
         }
