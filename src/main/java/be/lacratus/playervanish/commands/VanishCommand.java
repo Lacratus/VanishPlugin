@@ -27,20 +27,18 @@ public class VanishCommand implements CommandExecutor {
         }
         Player player = (Player) sender;
         //Persoon in vanish zal tevoorschijn komen
-        if(plugin.vanished.contains(player)){
-            plugin.vanished.remove(player);
-            plugin.vanishBar.removePlayer(player);
-            for (Player x : Bukkit.getOnlinePlayers()) {
-                x.showPlayer(plugin, player);
+        if(plugin.isVanished(player)){
+            plugin.removeVanishedPlayer(player);
+            for (Player unvanishedPlayer : Bukkit.getOnlinePlayers()) {
+                unvanishedPlayer.showPlayer(plugin, unvanishedPlayer);
             }
             player.sendMessage("Je bent terug zichtbaar");
 
         } else {
             //Persoon zal in vanish terechtkomen
-            plugin.vanished.add(player);
-            plugin.vanishBar.addPlayer(player);
-            for (Player x : Bukkit.getOnlinePlayers()) {
-                x.hidePlayer(plugin, player);
+            plugin.addVanishedPlayer(player);
+            for (Player vanishedPlayer : Bukkit.getOnlinePlayers()) {
+                vanishedPlayer.hidePlayer(plugin, vanishedPlayer);
             }
             player.sendMessage("Je bent nu onzichtbaar");
         }

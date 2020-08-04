@@ -18,8 +18,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         //Als een speler joined zullen alle andere spelers die in vanish zitten verdwijnen
-        for (Player x : plugin.vanished) {
-            player.hidePlayer(plugin,x);
+        for (Player vanishedSpeler : plugin.getVanished()) {
+            player.hidePlayer(plugin,vanishedSpeler);
         }
 
     }

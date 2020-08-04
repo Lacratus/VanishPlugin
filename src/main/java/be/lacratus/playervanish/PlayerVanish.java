@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerVanish extends JavaPlugin {
-    public List<Player> vanished = new ArrayList<>();
-    public BossBar vanishBar = Bukkit.createBossBar("Vanished", BarColor.BLUE, BarStyle.SEGMENTED_6);
+    private List<Player> vanished = new ArrayList<>();
+    private BossBar vanishBar = Bukkit.createBossBar("Vanished", BarColor.BLUE, BarStyle.SEGMENTED_6);
 
     @Override
     public void onEnable() {
@@ -31,6 +31,25 @@ public final class PlayerVanish extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        System.out.println("Vanishplugin Disabled");}
+        System.out.println("Vanishplugin Disabled");
+    }
+
+    public boolean isVanished(Player player){
+        return vanished.contains(player);
+    }
+
+    public void removeVanishedPlayer(Player player){
+        vanished.remove(player);
+        vanishBar.removePlayer(player);
+    }
+
+    public void addVanishedPlayer(Player player){
+        vanished.add(player);
+        vanishBar.addPlayer(player);
+    }
+
+    public List<Player> getVanished(){
+        return vanished;
+    }
 
 }
