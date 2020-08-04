@@ -18,7 +18,7 @@ public class PlayerQuitListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        //Waneer een speler disconnect of crashed zal hij niet meer vanished zijn bij terugjoinen.
+        //Wanneer een speler disconnect of crashed zal hij niet meer vanished zijn bij het terugjoinen.
         if(plugin.vanished.contains(player)) {
             plugin.vanished.remove(player);
             plugin.vanishBar.removePlayer(player);

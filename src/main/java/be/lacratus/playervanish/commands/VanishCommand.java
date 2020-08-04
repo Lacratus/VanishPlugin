@@ -20,11 +20,13 @@ public class VanishCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        //Werkt niet bij uitvoerding door console
         if (!(sender instanceof Player)) {
             sender.sendMessage("U bent geen speler!");
             return false;
         }
         Player player = (Player) sender;
+        //Persoon in vanish zal tevoorschijn komen
         if(plugin.vanished.contains(player)){
             plugin.vanished.remove(player);
             plugin.vanishBar.removePlayer(player);
@@ -34,6 +36,7 @@ public class VanishCommand implements CommandExecutor {
             player.sendMessage("Je bent terug zichtbaar");
 
         } else {
+            //Persoon zal in vanish terechtkomen
             plugin.vanished.add(player);
             plugin.vanishBar.addPlayer(player);
             for (Player x : Bukkit.getOnlinePlayers()) {
