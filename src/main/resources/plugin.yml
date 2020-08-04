@@ -1,0 +1,7 @@
+name: Playervanish
+version: ${project.version}
+main: be.lacratus.playervanish.PlayerVanish
+authors: [Lacratus]
+description: Een plugin zodat spelers zich kunnen verbergen voor andere spelers
+commands:
+  vanish:
